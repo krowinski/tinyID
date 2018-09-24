@@ -12,7 +12,7 @@
     // dictionary must consist of at least two UNIQUE unicode characters.
     $tinyId = new TinyID('2BjLhRduC6Tb8Q5cEk9oxnFaWUDpOlGAgwYzNre7tI4yqPvXm0KSV1fJs3ZiHM');
     
-    var_dump($tinyId->encode('48888851145')); // will print
+    var_dump($tinyId->encode('48888851145')); // will print 1FN7Ab
     var_dump($tinyId->decode('1FN7Ab')); // will print 48888851145
 ```
 
@@ -65,6 +65,11 @@ Or you can go wild just for the fun of it.
 ```php
     var_dump((new TinyID('😀😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷😸😹😺😻😼😽😾😿'))->encode(48888851145)); // '😭😢😀😊😫😉'
 ```
+
+## OTHER IMPLEMENTATIONS
+
+* [Perl 5](http://search.cpan.org/~bbkr/Integer-Tiny-0.3/lib/Integer/Tiny.pm)
+* [PHP](https://github.com/krowinski/tinyID)
 
 It's based on great work of *bbkr* and his project [https://github.com/bbkr/TinyID](https://github.com/bbkr/TinyID)
 
