@@ -1,6 +1,10 @@
 # Shorten and obfuscate IDs
 
 [![Build Status](https://travis-ci.org/krowinski/tinyID.svg?branch=master)](https://travis-ci.org/krowinski/tinyID)
+[![Latest Stable Version](https://poser.pugx.org/krowinski/tinyid/v/stable)](https://packagist.org/packages/krowinski/tinyid) [![Total Downloads](https://poser.pugx.org/krowinski/tinyid/downloads)](https://packagist.org/packages/krowinski/tinyid) [![Latest Unstable Version](https://poser.pugx.org/krowinski/tinyid/v/unstable)](https://packagist.org/packages/krowinski/tinyid) 
+[![License](https://poser.pugx.org/krowinski/tinyid/license)](https://packagist.org/packages/krowinski/tinyid)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/krowinski/tinyid/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/krowinski/tinyid/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/krowinski/tinyid/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/krowinski/tinyid/?branch=master)
 
 ## SYNOPSIS
 
