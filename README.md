@@ -1,5 +1,7 @@
 # Shorten and obfuscate IDs
 
+[![Build Status](https://travis-ci.org/krowinski/tinyID.svg?branch=master)](https://travis-ci.org/krowinski/tinyID)
+
 ## SYNOPSIS
 
 ```php
