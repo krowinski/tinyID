@@ -55,7 +55,7 @@ class TinyID
      */
     public function encode($value)
     {
-        if ($value < 0) {
+        if ((int) $value < 0) {
             throw new \InvalidArgumentException('cannot encode negative number');
         }
 
