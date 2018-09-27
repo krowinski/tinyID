@@ -73,29 +73,44 @@ class TinyIDTest extends TestCase
         self::assertEquals('18446744073709551615', $tinyId->decode($tinyId->encode('18446744073709551615')));
     }
 
+    public function failuresProvider()
+    {
+        return [
+            ['a', 'dictionary too short'],
+            ['aa', 'dictionary contains duplicated characters'],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider failuresProvider
+     */
+    public function failuresOnInvalidString($invalidString, $expectedMessage)
+    {
+        try {
+            new TinyID($invalidString);
+        } catch (\InvalidArgumentException $e) {
+            self::assertEquals($expectedMessage, $e->getMessage());
+        }
+    }
+
     /**
      * @test
      */
-    public function failures()
+    public function failuresOnEncodingWithNegativeNumber()
     {
-        try {
-            new TinyID('a');
-        } catch (\InvalidArgumentException $e) {
-            self::assertEquals('dictionary too short', $e->getMessage());
-        }
-
-        try {
-            new TinyID('aa');
-        } catch (\InvalidArgumentException $e) {
-            self::assertEquals('dictionary contains duplicated characters', $e->getMessage());
-        }
-
         try {
             (new TinyID('ab'))->encode(-1);
         } catch (\InvalidArgumentException $e) {
             self::assertEquals('cannot encode negative number', $e->getMessage());
         }
+    }
 
+    /**
+     * @test
+     */
+    public function failuresOnDecodingWithCharacter()
+    {
         try {
             (new TinyID('ab'))->decode('x');
         } catch (\InvalidArgumentException $e) {
