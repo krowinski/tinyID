@@ -15,7 +15,7 @@
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^5.0"
+    "phpunit/phpunit": "^5.7 || ^6.5"
   },
   "license": "MIT",
   "authors": [
@@ -27,6 +27,11 @@
   "autoload": {
     "psr-4": {
       "TinyID\\": "src/TinyID"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TinyID\\Tests\\Unit\\": "tests/Unit"
     }
   },
   "minimum-stability": "stable"
