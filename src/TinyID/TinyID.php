@@ -31,8 +31,8 @@ class TinyID
             throw new \InvalidArgumentException('dictionary too short');
         }
 
-        $this->dictionary = $this->stringSplit($dictionary);
-        $this->dictionaryLength = count(array_unique($this->dictionary));
+        $this->dictionary = array_unique($this->stringSplit($dictionary));
+        $this->dictionaryLength = count($this->dictionary);
 
         if ($dictionaryLength !== $this->dictionaryLength) {
             throw new \InvalidArgumentException('dictionary contains duplicated characters');
