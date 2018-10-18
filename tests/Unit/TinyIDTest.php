@@ -117,4 +117,11 @@ class TinyIDTest extends TestCase
             self::assertEquals('cannot decode string with characters not in dictionary', $e->getMessage());
         }
     }
+    
+    public function dictionaryWithRepeatedSymbols()
+    {
+        $tinyId = new TinyID('abbc');
+        self::assertEquals('c', $tinyId->encode('2'));
+        self::assertEquals('2', $tinyId->encode('c'));
+    }
 }
