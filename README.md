@@ -73,8 +73,6 @@ Or you can go wild just for the fun of it.
 ## OTHER IMPLEMENTATIONS
 
 * [Perl 5](http://search.cpan.org/~bbkr/Integer-Tiny-0.3/lib/Integer/Tiny.pm)
-* [PHP](https://github.com/krowinski/tinyID)
-
-It's based on great work of *bbkr* and his project [https://github.com/bbkr/TinyID](https://github.com/bbkr/TinyID)
+* [Perl 6](https://github.com/bbkr/TinyID)
 
 All examples are in example dir.
