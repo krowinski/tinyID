@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use TinyID\TinyID;
 
@@ -10,6 +11,6 @@ $tinyId = new TinyID('2BjLhRduC6Tb8Q5cEk9oxnFaWUDpOlGAgwYzNre7tI4yqPvXm0KSV1fJs3
 var_dump($tinyId->encode('48888851145')); // 1FN7Ab
 var_dump($tinyId->decode('1FN7Ab')); // 48888851145
 
-var_dump((new TinyID('0123456789ABCDEFGH'))->encode(48888851145)); // '47F709HFF'
+var_dump((new TinyID('0123456789ABCDEFGH'))->encode('48888851145')); // '47F709HFF'
 
-var_dump((new TinyID('😀😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷😸😹😺😻😼😽😾😿'))->encode(48888851145)); // '😭😢😀😊😫😉'
+var_dump((new TinyID('😀😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷😸😹😺😻😼😽😾😿'))->encode('48888851145')); // '😭😢😀😊😫😉'

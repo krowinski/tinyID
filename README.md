@@ -17,7 +17,7 @@
     $tinyId = new TinyID('2BjLhRduC6Tb8Q5cEk9oxnFaWUDpOlGAgwYzNre7tI4yqPvXm0KSV1fJs3ZiHM');
     
     var_dump($tinyId->encode('48888851145')); // will print 1FN7Ab
-    var_dump($tinyId->decode('1FN7Ab')); // will print 48888851145
+    var_dump($tinyId->decode('1FN7Ab')); // will print '48888851145'
 ```
 
 ## DESCRIPTION
@@ -43,11 +43,11 @@ This very useful property allows to adapt your encoding to the environment.
 For example in SMS messages you may restrict key to US ASCII to avoid available length reduction caused by conversion to GSM 03.38 charset.
 Or if you want to use such ID as file/directory name in case insensitive filesystem you may want to use only lowercase letters in the key.
 
-### encode(123)
+### encode('123')
 
 Encode positive integer into a string.
 
-Note that leading `0`s are not preserved, `encode(123)` is the same as `encode(00123)`.
+Note that leading `0`s are not preserved, `encode('123')` is the same as `encode('00123')`.
 
 Used algorithm is a base to the length of the key conversion that maps to distinct permutation of characters.
 Do not consider it a strong encryption, but if you have secret and long and well shuffled key it is almost impossible to reverse-engineer real ID.
@@ -61,7 +61,7 @@ Decode string back into a positive integer.
 If you provide sequential characters in key you can convert your numbers to some weird numeric systems, for example base18:
 
 ```php
-    var_dump((new TinyID('0123456789ABCDEFGH'))->encode(48888851145)); // '47F709HFF'
+    var_dump((new TinyID('0123456789ABCDEFGH'))->encode('48888851145')); // '47F709HFF'
 ```
 
 Or you can go wild just for the fun of it.

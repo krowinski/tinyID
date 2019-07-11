@@ -1,20 +1,18 @@
 <?php
+declare(strict_types=1);
 
 namespace TinyID\Tests\Unit;
 
-use TinyID\TinyID;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use TinyID\TinyID;
 
-/**
- * Class TinyIDTest
- * @package TinyID\Tests\Unit
- */
 class TinyIDTest extends TestCase
 {
     /**
      * @test
      */
-    public function shortestKeyPossible()
+    public function shortestKeyPossible(): void
     {
         $tinyId = new TinyID('ab');
 
@@ -31,7 +29,7 @@ class TinyIDTest extends TestCase
     /**
      * @test
      */
-    public function accentSensitive()
+    public function accentSensitive(): void
     {
         $tinyId = new TinyID('ąä');
 
@@ -42,7 +40,7 @@ class TinyIDTest extends TestCase
     /**
      * @test
      */
-    public function caseSensitive()
+    public function caseSensitive(): void
     {
         $tinyId = new TinyID('Aa');
 
@@ -54,7 +52,7 @@ class TinyIDTest extends TestCase
     /**
      * @test
      */
-    public function alphanumericKey()
+    public function alphanumericKey(): void
     {
         $tinyId = new TinyID('FujSBZHkPMincNQr6pq0mgxw2tXAsyb8DWV534EC1RUIlYoGOJhed9afKT7vzL');
 
@@ -65,15 +63,17 @@ class TinyIDTest extends TestCase
     /**
      * @test
      */
-    public function veryLongUnicodeKey()
+    public function veryLongUnicodeKey(): void
     {
         $tinyId
-            = new TinyID('⊷⇑≩≔⊴⊖⢻⢬⇖⊙⣮≺⇋↨⣺∄⇫⊌⊍⢶∦⠢⋠⊜⋅⋾⊔⠅⣎⋥⠌⣋⢟⋕⇮∔↻⣃⢅≭⡆∕↩⇨⢺⇩∤⣝⇛↡⡖⡃⢤≖⋍⊗∐⊒↮∜⣭⇌⇭⣒≼≴∶≵⢭⋰⡦⇏∳⇄∍⋧⋐⣉⢊∝∠⠸⠯⋋≷⣑∮≜⡚⠕⊎∎⡐⣶⋇⊂⡘⢘⡵∟⋹∿⣜⣽⢱∞⊸⣸⢪↢⣖∹⇱⇳⡫≍↲⣴≳⊋⠩⋣⣰≈≾⢽≪∫⊘∈⋶⠒≘∖∪⊺⊏⠼⢼⠐⢮⊪⊕⊿⠬⇈⠚↷≻↾≆⠄⋂↚⇙⇁⠇⊓⢎⣲⡒⠓⣻≞⣈∬⊨⋔⇠↣⢹⣍∁⠋↠⡇⊁⡅↗⣣∾≂⠴⋭⠖⡥∆⇴⊄≐⊈⣐⋑⡂⊭≝∃⠗∛⇿⊡⡮⢿∣⡢↬≏⋒⢀∥⇦⠃⣔⇒⊥⇽⊚⢌⠿≥⋡↳↛⡀⋢⣅⣵≃↑≲⇆∧⡝⊧≓⢢∡≑⋸⢲↰⢳⣧⡭≹≬⊼⡙⊠⠤⡈⇟≎↸⣫∏⡏⢛⢑⣷⇯⢃∻∭⡔⊅⢨⇝≒⊶⠉⡾⇉⡛↼∵⋿⇻⋵⇂∩∼⡋⡽⡶↘⡨⊉⢞⊟≡⢈≰⇾≤⇵≙≊⣤⠈⋩↖⋴⇡↹⠮⠦⇢∰⠵⣁≣⡁⠜⋦⋪√⢥↿⣌⇃↴⊯≫⢾⇔⡷⇊⣠⋽⇞⣞∅⠰⋘≁⇸⊾⊫⢏↽⢴⋨⋱⠣⡯⣿∊⣩⡠⋖∯⊹⠟⠺⠞⡓⡕⇕⢸⋬⊊⣇⇧↜⇹⣙⢰⠥⊮∺↧⢋⋙⣟⋼⊣⠹⣹⡻⢫↞⣄⡗⡣⣨⇤⊛⡤↦⢵↝⡱⠽⠶⇰⢉⇷⢡↪⊱⋳↔⡪⊀⋆⣘⇶⢠⣡⊽⠊⇓∽⡞⊑⊐⇇⠱≕⣀↫⢩⢦⣢⡺↭⣪∂∢⠷⣊∗⋉⠳⇺⣂⢁⋯⡡⢣⠙⇬⠡⋗⠭≧⢜⣚⡳⋫⇚⋃⢗⋮⇲∨⠆⢒⠁⋚⋞⣬≢⡧≀⋓⢇≯⡿⋜⢂⠑⋁⋈≉⡩⠍⊞⊇≽⊳⢍⡟≨⇪⇍↥⇅⠝↵∑⡸⢕∲≅⊬⠠⠪≦⡊←↕⣳⋌⊦≠⋲⠲⊝⋎⊩⇜⠨⡹⣓⊵⠧⇣⊃∱⡲⋏↓⢷⠫∉⠂≌⢯⣏⠘≶⢄≟↶⋷≸⇎⡴⣾⣛⇘⇀⢔⡉⡬⡼⊤⢆⡄⢐⠾∋→⢧⇥∀⡜⡍≿⢙⇐⡌⇼⣼≮⋺⣱↙∘⊰≗⣆↯⣕⠔≄⊻⋛⡰⠏∓⠻↟≱⋀∷⢝∴⣥≋↤⋝↱∇⡑⣦⢖⢚⣯⋄⊆⡎⠎⢓≚⋊≇≛↺∌⋤−∙⠛⊲⊢∸⣗⋟⇗⋻%');
+            = new TinyID(
+            '⊷⇑≩≔⊴⊖⢻⢬⇖⊙⣮≺⇋↨⣺∄⇫⊌⊍⢶∦⠢⋠⊜⋅⋾⊔⠅⣎⋥⠌⣋⢟⋕⇮∔↻⣃⢅≭⡆∕↩⇨⢺⇩∤⣝⇛↡⡖⡃⢤≖⋍⊗∐⊒↮∜⣭⇌⇭⣒≼≴∶≵⢭⋰⡦⇏∳⇄∍⋧⋐⣉⢊∝∠⠸⠯⋋≷⣑∮≜⡚⠕⊎∎⡐⣶⋇⊂⡘⢘⡵∟⋹∿⣜⣽⢱∞⊸⣸⢪↢⣖∹⇱⇳⡫≍↲⣴≳⊋⠩⋣⣰≈≾⢽≪∫⊘∈⋶⠒≘∖∪⊺⊏⠼⢼⠐⢮⊪⊕⊿⠬⇈⠚↷≻↾≆⠄⋂↚⇙⇁⠇⊓⢎⣲⡒⠓⣻≞⣈∬⊨⋔⇠↣⢹⣍∁⠋↠⡇⊁⡅↗⣣∾≂⠴⋭⠖⡥∆⇴⊄≐⊈⣐⋑⡂⊭≝∃⠗∛⇿⊡⡮⢿∣⡢↬≏⋒⢀∥⇦⠃⣔⇒⊥⇽⊚⢌⠿≥⋡↳↛⡀⋢⣅⣵≃↑≲⇆∧⡝⊧≓⢢∡≑⋸⢲↰⢳⣧⡭≹≬⊼⡙⊠⠤⡈⇟≎↸⣫∏⡏⢛⢑⣷⇯⢃∻∭⡔⊅⢨⇝≒⊶⠉⡾⇉⡛↼∵⋿⇻⋵⇂∩∼⡋⡽⡶↘⡨⊉⢞⊟≡⢈≰⇾≤⇵≙≊⣤⠈⋩↖⋴⇡↹⠮⠦⇢∰⠵⣁≣⡁⠜⋦⋪√⢥↿⣌⇃↴⊯≫⢾⇔⡷⇊⣠⋽⇞⣞∅⠰⋘≁⇸⊾⊫⢏↽⢴⋨⋱⠣⡯⣿∊⣩⡠⋖∯⊹⠟⠺⠞⡓⡕⇕⢸⋬⊊⣇⇧↜⇹⣙⢰⠥⊮∺↧⢋⋙⣟⋼⊣⠹⣹⡻⢫↞⣄⡗⡣⣨⇤⊛⡤↦⢵↝⡱⠽⠶⇰⢉⇷⢡↪⊱⋳↔⡪⊀⋆⣘⇶⢠⣡⊽⠊⇓∽⡞⊑⊐⇇⠱≕⣀↫⢩⢦⣢⡺↭⣪∂∢⠷⣊∗⋉⠳⇺⣂⢁⋯⡡⢣⠙⇬⠡⋗⠭≧⢜⣚⡳⋫⇚⋃⢗⋮⇲∨⠆⢒⠁⋚⋞⣬≢⡧≀⋓⢇≯⡿⋜⢂⠑⋁⋈≉⡩⠍⊞⊇≽⊳⢍⡟≨⇪⇍↥⇅⠝↵∑⡸⢕∲≅⊬⠠⠪≦⡊←↕⣳⋌⊦≠⋲⠲⊝⋎⊩⇜⠨⡹⣓⊵⠧⇣⊃∱⡲⋏↓⢷⠫∉⠂≌⢯⣏⠘≶⢄≟↶⋷≸⇎⡴⣾⣛⇘⇀⢔⡉⡬⡼⊤⢆⡄⢐⠾∋→⢧⇥∀⡜⡍≿⢙⇐⡌⇼⣼≮⋺⣱↙∘⊰≗⣆↯⣕⠔≄⊻⋛⡰⠏∓⠻↟≱⋀∷⢝∴⣥≋↤⋝↱∇⡑⣦⢖⢚⣯⋄⊆⡎⠎⢓≚⋊≇≛↺∌⋤−∙⠛⊲⊢∸⣗⋟⇗⋻%'
+        );
 
         self::assertEquals('18446744073709551615', $tinyId->decode($tinyId->encode('18446744073709551615')));
     }
 
-    public function failuresProvider()
+    public function failuresProvider(): array
     {
         return [
             ['a', 'dictionary too short'],
@@ -84,12 +84,14 @@ class TinyIDTest extends TestCase
     /**
      * @test
      * @dataProvider failuresProvider
+     * @param string $invalidString
+     * @param string $expectedMessage
      */
-    public function failuresOnInvalidString($invalidString, $expectedMessage)
+    public function failuresOnInvalidString(string $invalidString, string $expectedMessage): void
     {
         try {
             new TinyID($invalidString);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             self::assertEquals($expectedMessage, $e->getMessage());
         }
     }
@@ -97,11 +99,11 @@ class TinyIDTest extends TestCase
     /**
      * @test
      */
-    public function failuresOnEncodingWithNegativeNumber()
+    public function failuresOnEncodingWithNegativeNumber(): void
     {
         try {
-            (new TinyID('ab'))->encode(-1);
-        } catch (\InvalidArgumentException $e) {
+            (new TinyID('ab'))->encode('-1');
+        } catch (InvalidArgumentException $e) {
             self::assertEquals('cannot encode negative number', $e->getMessage());
         }
     }
@@ -109,11 +111,11 @@ class TinyIDTest extends TestCase
     /**
      * @test
      */
-    public function failuresOnDecodingWithCharacter()
+    public function failuresOnDecodingWithCharacter(): void
     {
         try {
             (new TinyID('ab'))->decode('x');
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             self::assertEquals('cannot decode string with characters not in dictionary', $e->getMessage());
         }
     }
