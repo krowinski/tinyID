@@ -5,8 +5,7 @@
     "id",
     "obfuscate",
     "shortid",
-    "ids",
-    "php"
+    "ids"
   ],
   "type": "library",
   "require": {
