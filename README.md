@@ -1,6 +1,6 @@
 # Shorten and obfuscate IDs
 
-[![Build Status](https://travis-ci.org/krowinski/tinyID.svg?branch=master)](https://travis-ci.org/krowinski/tinyID)
+[![PHP Tests](https://github.com/krowinski/tinyID/actions/workflows/tests.yml/badge.svg)](https://github.com/krowinski/tinyID/actions/workflows/tests.yml)
 [![Latest Stable Version](https://poser.pugx.org/krowinski/tinyid/v/stable)](https://packagist.org/packages/krowinski/tinyid)
 [![Total Downloads](https://poser.pugx.org/krowinski/tinyid/downloads)](https://packagist.org/packages/krowinski/tinyid)
 [![License](https://poser.pugx.org/krowinski/tinyid/license)](https://packagist.org/packages/krowinski/tinyid)
@@ -25,7 +25,7 @@
 
 Using real IDs in various places - such as GET links or API payload - is generally a bad idea:
 
-* It may reveal some sensitive informations about your business, such as growth rate or amount of customers.
+* It may reveal some sensitive information about your business, such as growth rate or amount of customers.
 * If someone finds unprotected resource link, where you forgot to check if passed resource ID really belongs to currently logged-in user, he will be able to steal all of your data really fast just by
   incrementing ID in links.
 * Big numbers may cause overflows in places where length is limited, such as SMS messages.
@@ -41,7 +41,7 @@ Key must consist of at least two ***unique*** unicode characters.
 The longer the dictionary - the shorter encoded ID.
 
 Encoded ID will be made exclusively out of characters from the key. This very useful property allows to adapt your encoding to the environment. For example in SMS messages you may restrict key to US
-ASCII to avoid available length reduction caused by conversion to GSM 03.38 charset. Or if you want to use such ID as file/directory name in case insensitive filesystem you may want to use only
+ASCII to avoid available length reduction caused by conversion to GSM 03.38 charset. Or if you want to use such ID as file/directory name in case-insensitive filesystem you may want to use only
 lowercase letters in the key.
 
 ### encode('123')
