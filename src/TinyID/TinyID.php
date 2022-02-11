@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TinyID;
@@ -8,8 +9,8 @@ use InvalidArgumentException;
 
 class TinyID
 {
-    private $dictionary;
-    private $dictionaryLength;
+    private array $dictionary;
+    private int $dictionaryLength;
 
     public function __construct(string $dictionary)
     {

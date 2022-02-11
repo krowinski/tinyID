@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TinyID\Tests\Unit;
@@ -9,10 +10,7 @@ use TinyID\TinyID;
 
 class TinyIDTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shortestKeyPossible(): void
+    public function testShortestKeyPossible(): void
     {
         $tinyId = new TinyID('ab');
 
@@ -26,10 +24,7 @@ class TinyIDTest extends TestCase
         self::assertEquals('18446744073709551615', $tinyId->decode('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'));
     }
 
-    /**
-     * @test
-     */
-    public function accentSensitive(): void
+    public function testAccentSensitive(): void
     {
         $tinyId = new TinyID('ąä');
 
@@ -37,10 +32,7 @@ class TinyIDTest extends TestCase
         self::assertEquals('2', $tinyId->decode('äą'));
     }
 
-    /**
-     * @test
-     */
-    public function caseSensitive(): void
+    public function testCaseSensitive(): void
     {
         $tinyId = new TinyID('Aa');
 
@@ -48,11 +40,7 @@ class TinyIDTest extends TestCase
         self::assertEquals('2', $tinyId->decode('aA'));
     }
 
-
-    /**
-     * @test
-     */
-    public function alphanumericKey(): void
+    public function testAlphanumericKey(): void
     {
         $tinyId = new TinyID('FujSBZHkPMincNQr6pq0mgxw2tXAsyb8DWV534EC1RUIlYoGOJhed9afKT7vzL');
 
@@ -60,10 +48,7 @@ class TinyIDTest extends TestCase
         self::assertEquals('18446744073709551615', $tinyId->decode('gzUp3uHipVr'));
     }
 
-    /**
-     * @test
-     */
-    public function veryLongUnicodeKey(): void
+    public function testVeryLongUnicodeKey(): void
     {
         $tinyId
             = new TinyID(
@@ -82,12 +67,11 @@ class TinyIDTest extends TestCase
     }
 
     /**
-     * @test
      * @dataProvider failuresProvider
      * @param string $invalidString
      * @param string $expectedMessage
      */
-    public function failuresOnInvalidString(string $invalidString, string $expectedMessage): void
+    public function testFailuresOnInvalidString(string $invalidString, string $expectedMessage): void
     {
         try {
             new TinyID($invalidString);
@@ -96,10 +80,7 @@ class TinyIDTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function failuresOnEncodingWithNegativeNumber(): void
+    public function testFailuresOnEncodingWithNegativeNumber(): void
     {
         try {
             (new TinyID('ab'))->encode('-1');
@@ -108,10 +89,7 @@ class TinyIDTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function failuresOnDecodingWithCharacter(): void
+    public function testFailuresOnDecodingWithCharacter(): void
     {
         try {
             (new TinyID('ab'))->decode('x');
