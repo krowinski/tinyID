@@ -71,9 +71,10 @@ Or you can go wild just for the fun of it.
     var_dump((new TinyID('😀😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷😸😹😺😻😼😽😾😿'))->encode(48888851145)); // '😭😢😀😊😫😉'
 ```
 
-## OTHER IMPLEMENTATIONS
+## COMPATIBLE COUNTERPARTS
 
-* [Perl 5](http://search.cpan.org/~bbkr/Integer-Tiny-0.3/lib/Integer/Tiny.pm)
-* [Perl 6](https://github.com/bbkr/TinyID)
+* [Raku](https://github.com/bbkr/TinyID) - `TinyID`
+* [Rust](https://crates.io/crates/squishyid) - `SquishyID`
+* [Perl](http://search.cpan.org/~bbkr/Integer-Tiny-0.3/lib/Integer/Tiny.pm) - `Integer::Tiny`
 
 Examples are in example dir.
